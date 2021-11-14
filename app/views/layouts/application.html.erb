@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>McdonaldsProject6</title>
+    <%# the yield(:title) in title tag allows each erb page to pass in their title value so that we get customizable title for each webpage%>
+    <title>Peer Evaluation Tool | <%= yield(:title)%></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
