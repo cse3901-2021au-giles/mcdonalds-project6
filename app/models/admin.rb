@@ -1,7 +1,5 @@
 class Admin < ApplicationRecord
-<<<<<<< HEAD
     has-many :groups
-=======
     has_and_belongs_to_many :users
 
     before_save { a_email.downcase! }
@@ -13,5 +11,4 @@ class Admin < ApplicationRecord
                 uniqueness: true
 
     validates :a_password, presence: true, length: { minimum: 8 }
->>>>>>> refs/remotes/origin/main
 end

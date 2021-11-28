@@ -4,7 +4,6 @@ class CreateUser < ActiveRecord::Migration[6.1]
       t.string :username
       t.string :email
       t.string :password
-      t.string :type
 
       t.timestamps
     end
