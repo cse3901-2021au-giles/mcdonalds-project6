@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'user/group'
+  get 'user/proj'
+  get 'user/eval'
+  get 'admin/create_user'
+  get 'admin/create_group'
+  get 'admin/create_proj'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'static_user_pages#login'
