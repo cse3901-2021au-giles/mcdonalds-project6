@@ -1,2 +1,9 @@
-<h1>Admin#create_group</h1>
-<p>Find me in app/views/admin/create_group.html.erb</p>
+<h1>Create A Group</h1>
+
+<div>
+    <h1> Add Group</h1>
+    <%= form_tag '/login' do %>
+        Name: <%text_field_tag :groupName %> <br>
+        <%= submit_tag "Add Group" %>
+    <%end>
+</div>
