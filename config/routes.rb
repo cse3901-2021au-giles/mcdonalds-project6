@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "sign_up", to: "registrations#new"
+  post "users", to: "registrations#create"
+  get 'sessions/login' 
+  get 'sessions/signup'
   get 'user/group'
   get 'user/proj'
   get 'user/eval'
