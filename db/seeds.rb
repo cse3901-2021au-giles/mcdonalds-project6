@@ -5,6 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-Admin.create(username: "admin1",email: "admin1@osu.edu", password: "pw", created_at: Date.today, updated_at: Date.today)
-User.create(username: "user1",email: "user1@osu.edu", password: "pw", created_at: Date.today, updated_at: Date.today)
+Admin.create([{a_name: 'admin1'}, {email: 'admin1@osu.edu'}, {password: 'pw'}, Date.new(2020,11,28).to_time.to_i, updated_at: Date.new(2020,11,29).to_time.to_i])
+# Admin.create(a_name: "test2", email: "test.2@osu.edu", password: "test2pass", created_at: Date.new(2020,11,28).to_time.to_i, updated_at: Date.new(2020,11,29).to_time.to_i)
+# User.create(u_name: "user1", email: "user1@osu.edu", password: "pw", created_at: Date.today, updated_at: Date.today)
