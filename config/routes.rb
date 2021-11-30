@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'static_user_pages#login'
+  get '/login' to: 'static_user_pages#login'
   get 'static_user_pages/group'
   get 'static_user_pages/project'
   get 'static_user_pages/evaluation'
@@ -18,4 +19,6 @@ Rails.application.routes.draw do
   get 'static_admin_pages/members'
   get 'static_admin_pages/project'
   get 'static_admin_pages/student'
+
+  resources :users, only: [:new, :create, :index, :show]
 end

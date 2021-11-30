@@ -5,7 +5,7 @@ class User < ApplicationRecord
     has_many :projects, through: :evaluations
 
     before_save { email.downcase! }
-    validates :u_name, presence: true, length: { maximum: 50 }
+    validates :name, presence: true, length: { maximum: 50 }
 
     VALID_EMAIL_REGEX = /\A[a-z]+\.[1-9]\d*@osu\.edu/i
     validates :email, presence: true, length: { maximum: 255 },

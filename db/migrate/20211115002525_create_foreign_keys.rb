@@ -10,10 +10,10 @@ class CreateForeignKeys < ActiveRecord::Migration[6.1]
       t.belongs_to :group
     end
 
-    add_column :user_id, :evaluations, :integer
-    add_column :project_id, :evaluations, :integer
+    # add_column :user_id, :evaluations, :integer
+    # add_column :project_id, :evaluations, :integer
 
-    add_foreign_key :evaluations, :users
-    add_foreign_key :evaluations, :projects
+    # add_foreign_key :evaluations, :users
+    # add_foreign_key :evaluations, :projects
   end
 end

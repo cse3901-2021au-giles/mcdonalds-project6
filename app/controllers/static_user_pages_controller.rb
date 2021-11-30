@@ -1,5 +1,6 @@
 class StaticUserPagesController < ApplicationController
  def login
+   
  end
 
  def project
