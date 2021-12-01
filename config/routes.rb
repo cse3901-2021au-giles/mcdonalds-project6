@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get "sign_up", to: "registrations#new"
   post "users", to: "registrations#create"
+
+  get "new_groups", to: "admin_controller#new"
+  post "new_groups", to: "admin_controller#create"
+
+
   get 'sessions/login' 
   get 'sessions/signup'
   get 'user/group'
@@ -8,6 +13,7 @@ Rails.application.routes.draw do
   get 'user/eval'
   get 'admin/create_user'
   get 'admin/create_group'
+
   get 'admin/create_proj'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

@@ -6,5 +6,6 @@ class AdminController < ApplicationController
   end
 
   def create_proj
+    @project = project.new 
   end
 end

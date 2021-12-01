@@ -1,2 +1,20 @@
-<h1>Admin#create_proj</h1>
-<p>Find me in app/views/admin/create_proj.html.erb</p>
+<div>
+    <h1> Add Group</h1>
+    <div class = "projectName">
+        <%= form_with model: @project, url: new_groups_path do |form|%>
+        <%= form.label :projectName%>
+        <%= form.text_field :projectname,class: "form-control", placeholder: "Project Ruby"%>
+    </div>
+    <div class = "projectType">
+        
+         <%= form.label :projecttype%>
+         <%= form.text_field :projecttype,class: "form-control", placeholder: "Project Ruby"%>
+    </div>
+     <div class = "projectType">
+         <%= form.label :deadline %>
+         <%= form.text_field :deadline,class: "form-control", placeholder: "2/27/2021"%>
+    </div>
+    <div class = "submit">
+        <%= form.submit "Add Project", class: "btn btn-primary"%>
+    </div>
+</div>
