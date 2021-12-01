@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+
+    # used to generate new admins.
     def new
         @admin = Admin.new
     end

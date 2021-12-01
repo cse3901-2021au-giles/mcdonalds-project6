@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+  # login 
   def login
   end
 
