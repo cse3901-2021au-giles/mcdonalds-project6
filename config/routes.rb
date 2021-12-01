@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "sign_up", to: "registrations#new"
-  post "users", to: "registrations#create"
+  post "sign_up", to: "registrations#create"
 
   get "new_groups", to: "admin_controller#new"
   post "new_groups", to: "admin_controller#create"
