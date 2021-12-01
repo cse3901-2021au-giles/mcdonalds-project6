@@ -3,6 +3,7 @@ class AdminController < ApplicationController
   end
 
   def create_group
+     @group = group.new
   end
 
   def create_proj
