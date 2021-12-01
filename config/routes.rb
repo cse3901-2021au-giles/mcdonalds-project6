@@ -2,10 +2,15 @@ Rails.application.routes.draw do
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
 
+<<<<<<< HEAD
   get "new_users", to: "admin#new_user"
   post "new_users", to: "admin#create_user"
   get "new_groups", to: "admin_controller#new"
   post "new_groups", to: "admin_controller#create"
+=======
+  get "create_proj", to: "admin_controller#new"
+  post "create_proj", to: "admin_controller#create"
+>>>>>>> 7d188ed71ad001286ac3c96246a41d4666f8351f
 
 
   get 'sessions/login' 
