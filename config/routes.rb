@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   get "new_users", to: "admin#new_user"
   post "new_users", to: "admin#create_user"
   
-  get "create_group", to: "admin_controller#new"
-  post "create_group", to: "admin_controller#create"
+  get "new_group", to: "admin#new_group"
+  post "new_group", to: "admin#create_group"
 
-  get "create_proj", to: "admin_controller#new"
-  post "create_proj", to: "admin_controller#create"
+  get "new_proj", to: "admin#new_proj"
+  post "new_proj", to: "admin#create_proj"
 
 
 
