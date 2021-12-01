@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get "new_users", to: "admin#new_user"
   post "new_users", to: "admin#create_user"
-  
+  delete "new_users", to: "admin#delete_user"
   get "new_group", to: "admin#new_group"
   post "new_group", to: "admin#create_group"
 
