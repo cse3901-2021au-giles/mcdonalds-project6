@@ -1,7 +1,7 @@
 <div>
     <h1> Add Group</h1>
     <div class = "projectName">
-        <%= form_with model: @project, url: create_proj_path do |form|%>
+        <%= form_with model: @project, url: new_proj_path do |form|%>
         <%= form.label :projectName%>
         <%= form.text_field :projectname,class: "form-control", placeholder: "Project Ruby"%>
     </div>
