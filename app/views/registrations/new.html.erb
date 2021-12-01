@@ -1,16 +1,15 @@
 <h1>Admin Sign Up</h1>
 <%= form_with model: @admin, url: sign_up_path do |form| %>
-    <%
-=begin%>
- <% if @admin.errors.any? %>
-        <div class="alert alert-danger">
-            <% @admin.errors.full_messages.each do |messages| %>
-                <div> <%= message %> </div>
-            <% end %>
-        </div>
-    <% end %> 
-<%
-=end%>
+    
+    <% if @admin.errors.any? %>
+            <div class="alert alert-danger">
+                <% @admin.errors.full_messages.each do |messages| %>
+                    <div> <%= message %> </div>
+                <% end %>
+            </div>
+        <% end %> 
+
+
 
     <div class="mb-3">
         <%= form.label :name %>
