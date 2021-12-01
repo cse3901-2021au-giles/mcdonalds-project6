@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
+
   def create_user
+    @user = User.new
   end
 
   def create_group

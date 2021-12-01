@@ -1,2 +1,42 @@
 <h1>Admin#create_user</h1>
+
+<%= form_with model: @user, url: new_users_path do |form| %>
+    
+    <%
+=begin%>
+ <% if @admin.errors.any? %>
+            <div class="alert alert-danger">
+                <% @admin.errors.full_messages.each do |message| %>
+                    <div> <%= message %> </div>
+                <% end %>
+            </div>
+        <% end %>  
+<%
+=end%>
+    <div class="mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control", placeholder: "your name" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control", placeholder: "lname@osu.edu" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: "form-control", placeholder: "1234" %>
+    </div>
+    <div class="mb-3">
+        <%= form.submit "Create User", class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+<body>
+    <h2> Students </h2>
+    <% @user.each do |usr| %>
+    <tr>
+        <td><%= usr.name %> </td>
+    </tr>
+    <% end %>
+</body>
+
 <p>Find me in app/views/admin/create_user.html.erb</p>
