@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
 
+  # all user controller functions
   def new_user # for when you first open the page
     @user = User.new
     @users = User.all
@@ -16,8 +17,14 @@ class AdminController < ApplicationController
   end
 
   def delete_user
+
   end
 
+  def  user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
+
+  # all group controller functions for creating and managing groups.
   def new_group
       @group= Group.new
   end
@@ -53,8 +60,6 @@ class AdminController < ApplicationController
       params.require(:proj).permit(:projectname, :projecttype, :deadline)
   end
 
-  def  user_params
-      params.require(:user).permit(:name, :email, :password)
-  end
+  
 
 end
