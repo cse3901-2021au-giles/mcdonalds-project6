@@ -4,7 +4,7 @@
     <h1> Add Group </h1>
     <p> Please write a group name that has not been taken yet</p>
     <div class = "GroupName">
-        <%= form_with model: @project, url: create_group_path do |form|%>
+        <%= form_with model: @group, url: new_group_path do |form|%>
         <%= form.label :groupname%>
         <%= form.text_field :groupname,class: "form-control", placeholder: "McDonalds"%>
     </div>
