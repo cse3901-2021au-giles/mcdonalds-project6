@@ -2,6 +2,7 @@ class AdminController < ApplicationController
 
   def new_user
     @user = User.new
+    @users = User.all
   end
 
   def create_group
