@@ -1,10 +1,11 @@
 class AdminController < ApplicationController
 
-  def create_user
+  def new_user
     @user = User.new
   end
 
   def create_group
+     @group = group.new
   end
 
   def create_proj
