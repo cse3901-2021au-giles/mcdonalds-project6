@@ -1,2 +1,27 @@
-<h1>User#eval</h1>
-<p>Find me in app/views/user/eval.html.erb</p>
+<% provide(:title, @projects.projectname) %>
+
+<h1>Peer Evaluation</h1>
+
+<div>
+  <%if projects.users.any?%>
+    <%projects.users do |user|%>
+      <tr>
+        <td><%= user.name%></td>
+        <td>
+          <%= form_with model :@evaluation, url: new_eval_path do |form|%>
+          <%= form.label :rating %>
+          <%= form.text_field :rating,class: "form-control" %>
+        </td>
+        <td>
+          <%= form.label :comment %>
+          <%= form.text_field :context,class:"form-control" %>
+        </td>
+        <td>
+          <%= form.submit "Submit", class: "btn btn-danger"%>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</div>
+

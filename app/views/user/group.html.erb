@@ -1,2 +1,9 @@
-<h1>User#group</h1>
-<p>Find me in app/views/user/group.html.erb</p>
+<h1><%= @user.name %>>'s group</h1>
+
+<div>
+  <% if @user.groups.any?%>
+    <% @user.groups.each do |group| %>
+     <tr><%= group.groupname %></tr>
+    <% end %>
+  <% end %>
+</div>
