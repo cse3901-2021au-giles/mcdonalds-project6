@@ -50,7 +50,7 @@ class AdminController < ApplicationController
   end
 
   def destroy
-      @group = User.find(params[:id])
+      @group = Group.find(params[:id])
       @group.destroy
       flash[:success] = "The group was successfully destroyed."
       redirect_to group_home_url

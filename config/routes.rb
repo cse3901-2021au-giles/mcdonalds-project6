@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "admin_home", to: "admin#index"
   get "group_home", to: "admin#index_group"
   get "project_home", to: "admin#index_project"
+  delete 'group_home', to: 'admin#destroy'
 
    # admin sign ups
   get "sign_up", to: "registrations#new"
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   # create new group routes
   get "new_group", to: "admin#new_group"
   post "new_group", to: "admin#create_group"
-  delete 'new_group', to: 'admin#destroy'
+ 
 
   # create new project routes
   get "new_proj", to: "admin#new_proj"
