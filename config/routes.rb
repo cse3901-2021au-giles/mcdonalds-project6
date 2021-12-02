@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # main login page root
   # root 'sessions#login'
 
-
+ # admin routes
  # admin_home 
   get "admin_home", to: "admin#index"
   get "group_home", to: "admin#index_group"
@@ -36,11 +36,8 @@ Rails.application.routes.draw do
   get "new_proj", to: "admin#new_proj"
   post "new_proj", to: "admin#create_proj"
 
-
- 
-  get 'sessions/login' 
-  get 'sessions/signup'
-  get 'user/group'
+  # user routes
+  get 'user_groups', to: 'user#group'
   get 'user/proj'
   get 'user/eval'
   get 'admin/create_user'

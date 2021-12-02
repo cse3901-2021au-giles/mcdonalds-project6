@@ -1,9 +1,18 @@
-<h1><%= @user.name %>>'s group</h1>
+<h1><%= @user.name %>'s groups</h1>
+<table class="table">
+   <tr>
+      <th> Group Names </th>
+  </tr>
+</table>
 
-<div>
+<%
+=begin%>
+ <div>
   <% if @user.groups.any?%>
     <% @user.groups.each do |group| %>
      <tr><%= group.groupname %></tr>
     <% end %>
   <% end %>
-</div>
+</div> 
+<%
+=end%>
