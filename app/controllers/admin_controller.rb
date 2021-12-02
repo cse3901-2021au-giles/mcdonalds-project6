@@ -66,8 +66,8 @@ class AdminController < ApplicationController
       end
   end
 
-  def  projects_params
-      params.require(:project).permit(:projectname, :projecttype, :deadline, :commit)
+  def projects_params
+    params.require(:project).permit(:projectname, :projecttype, :deadline, :commit)
   end
 
   
