@@ -1,2 +1,10 @@
-<h1>User#proj</h1>
-<p>Find me in app/views/user/proj.html.erb</p>
+<% provide(:title, @group.groupname) %>
+
+<h1>Projects</h1>
+
+<div>
+  <% @group.peojects.any?%>
+    <% @group.projects do |projects| %>
+     <tr><%= group.projectname %></tr>
+    <% end %>
+</div>
