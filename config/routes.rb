@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete 'create_users', to: 'create_user#destroy'
   get 'create_users', to: 'create_user#index', as: 'cusers'
   post 'create_users', to: 'create_user#new'
+  patch 'create_users', to: 'create_user#update'
  
 
   # create new group routes

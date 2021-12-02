@@ -14,7 +14,14 @@ class CreateUserController < ApplicationController
           render 'create_user/index'
         end
     end
-    
+
+    def update
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+        else
+        end
+    end
+
     def destroy
         @user = User.find(params[:id])
         @user.destroy
