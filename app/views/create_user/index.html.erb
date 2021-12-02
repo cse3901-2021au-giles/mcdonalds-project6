@@ -1,0 +1,50 @@
+<h1>Create User</h1>
+
+<%= form_with model: @user, url: create_users_path do |form| %>
+    
+    <%
+=begin%>
+ <% if @admin.errors.any? %>
+            <div class="alert alert-danger">
+                <% @admin.errors.full_messages.each do |message| %>
+                    <div> <%= message %> </div>
+                <% end %>
+            </div>
+        <% end %>  
+<%
+=end%>
+    <div class="mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control", placeholder: "your name" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control", placeholder: "lname@osu.edu" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: "form-control", placeholder: "1234" %>
+    </div>
+    <div class="mb-3">
+        <%= form.submit "Create User", class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+<body>
+    <h2> Students </h2>
+    <table class="table">
+        <tr>
+            <th> Name </th>
+            <th> Email </th>
+            <th> Password </th>
+        </tr>
+        <% @users.each do |usr| %>
+        <tr>
+            <td><%= usr.name %> </td>
+            <td><%= usr.email %> </td>
+            <td><%= usr.password %> </td>
+            <td><%= link_to "Delete", cusers_path(id: usr.id), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+    </table>
+</body>
