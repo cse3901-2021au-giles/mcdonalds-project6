@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   # main login page root
   root 'sessions#login'
 
+<<<<<<< HEAD
   # admin sign ups
+=======
+  get "admin_home", to: "admin#index"
+
+  get "group_home", to: "admin#index_group"
+
+  get "project_home", to: "admin#index_project"
+
+>>>>>>> ca1616f6fda9c4b94f6ab7673f6b488f28c73eb5
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
 
@@ -21,7 +30,7 @@ Rails.application.routes.draw do
   post "new_proj", to: "admin#create_proj"
 
 
-
+ 
   get 'sessions/login' 
   get 'sessions/signup'
   get 'user/group'
@@ -31,6 +40,7 @@ Rails.application.routes.draw do
   get 'admin/create_group'
 
   get 'admin/create_proj'
+  get 'admin/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

@@ -1,5 +1,14 @@
 class AdminController < ApplicationController
 
+  def index
+  end
+
+  def index_group
+  end
+
+  def index_project
+  end
+
   # all user controller functions
   def new_user # for when you first open the page
     @user = User.new
@@ -34,7 +43,7 @@ class AdminController < ApplicationController
       if @group.save 
           redirect_to root_path, notice: "Successfully created group"
       else
-          render :new
+          render :new_group
       end
   end
 
@@ -44,20 +53,20 @@ class AdminController < ApplicationController
 
   
   def new_proj
-        @proj= Project.new
+        @projects= Project.new
   end
 
-  def create_group
-      @proj = Project.new(group_params)
-      if @proj.save 
+  def create_proj
+      @projects = Project.new(projects_params)
+      if @projects.save 
           redirect_to root_path, notice: "Successfully created project"
       else
-          render :new
+        render :new_proj
       end
   end
 
-  def  proj_params
-      params.require(:proj).permit(:projectname, :projecttype, :deadline)
+  def  projects_params
+      params.require(:project).permit(:projectname, :projecttype, :deadline, :commit)
   end
 
   
