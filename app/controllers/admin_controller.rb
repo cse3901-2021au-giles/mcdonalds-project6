@@ -4,6 +4,7 @@ class AdminController < ApplicationController
   end
 
   def index_group
+    @groups = Group.all
   end
 
   def index_project
@@ -35,16 +36,24 @@ class AdminController < ApplicationController
 
   # all group controller functions for creating and managing groups.
   def new_group
+      @groups = Group.all
       @group= Group.new
   end
 
   def create_group
       @group = Group.new(group_params)
       if @group.save 
-          redirect_to root_path, notice: "Successfully created group"
+          redirect_to group_home_url, notice: "Successfully created group"
       else
           render :new_group
       end
+  end
+
+  def destroy
+      @group = User.find(params[:id])
+      @group.destroy
+      flash[:success] = "The group was successfully destroyed."
+      redirect_to group_home_url
   end
 
   def  group_params

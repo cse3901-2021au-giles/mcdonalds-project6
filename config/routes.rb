@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   # create new group routes
   get "new_group", to: "admin#new_group"
   post "new_group", to: "admin#create_group"
+  delete 'new_group', to: 'admin#destroy'
 
   # create new project routes
   get "new_proj", to: "admin#new_proj"

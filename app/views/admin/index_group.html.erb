@@ -36,5 +36,19 @@
     <button>Delete Group</button >
     <button>Delete Student in Group</button>
 </div>
+<div>
+  <h2> Groups </h2>
+    <table class="table">
+        <tr>
+            <th> Name </th>
+        </tr>
+        <% @groups.each do |group| %>
+        <tr>
+            <td><%= group.groupname %> </td>
+            <td><%= link_to "Delete", group_home_path(id: group.id), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+    </table>
 
+</div>
 </body>
