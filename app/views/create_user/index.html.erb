@@ -11,14 +11,23 @@
           <a class="nav-link" href="/admin_home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/group_home">Groups</a>
+          <a class="nav-link" aria-current="page" href="/group_home">Groups</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/project_home">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/create_users">Users</a>
+          <a class="nav-link active" href="/create_users">Users</a>
         </li>
+        <% if @admin %>
+          <li class="nav-item">
+            <a class="nav-link"> Logged in as <%= @admin.email %>   
+             </a>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Logout", logout_path, method: :delete %>
+          </li>
+         <% end %>
       </ul>
     </div>
   </div>

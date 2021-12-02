@@ -2,14 +2,12 @@
 <%= form_with model: @admin, url: sign_up_path do |form| %>
     
     <% if @admin.errors.any? %>
-            <div class="alert alert-danger">
-                <% @admin.errors.full_messages.each do |message| %>
-                    <div> <%= message %> </div>
-                <% end %>
-            </div>
-        <% end %> 
-
-
+        <div class="alert alert-danger">
+            <% @admin.errors.full_messages.each do |message| %>
+                <div> <%= message %> </div>
+            <% end %>
+        </div>
+    <% end %> 
 
     <div class="mb-3">
         <%= form.label :name %>
@@ -31,3 +29,7 @@
         <%= form.submit "Sign Up", class: "btn btn-primary" %>
     </div>
 <% end %>
+
+<div>
+<%= link_to "Already have an account?", sign_in_path, class: "btn btn-secondary" %>
+</div>

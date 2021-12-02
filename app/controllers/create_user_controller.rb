@@ -1,6 +1,9 @@
 class CreateUserController < ApplicationController
 
     def index
+        if session[:admin_id]
+            @admin = Admin.find_by(id: session[:admin_id])
+        end
         @users = User.all
         @user = User.new
     end

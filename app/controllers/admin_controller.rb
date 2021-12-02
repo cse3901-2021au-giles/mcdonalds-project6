@@ -8,9 +8,15 @@ class AdminController < ApplicationController
 
   def index_group
     @groups = Group.all
+    if session[:admin_id]
+      @admin = Admin.find_by(id: session[:admin_id])
+    end
   end
 
   def index_project
+    if session[:admin_id]
+      @admin = Admin.find_by(id: session[:admin_id])
+    end
   end
 
   # all group controller functions for creating and managing groups.
@@ -20,6 +26,10 @@ class AdminController < ApplicationController
   end
 
   def create_group
+      if session[:admin_id]
+        @admin = Admin.find_by(id: session[:admin_id])
+      end
+
       @group = Group.new(group_params)
       if @group.save 
           redirect_to group_home_url, notice: "Successfully created group"
@@ -45,6 +55,9 @@ class AdminController < ApplicationController
   end
 
   def create_proj
+      if session[:admin_id]
+        @admin = Admin.find_by(id: session[:admin_id])
+      end
       @projects = Project.new(projects_params)
       if @projects.save 
           redirect_to root_path, notice: "Successfully created project"
