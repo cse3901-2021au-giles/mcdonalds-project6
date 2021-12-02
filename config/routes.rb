@@ -3,23 +3,21 @@ Rails.application.routes.draw do
   # main login page root
   root 'sessions#login'
 
-<<<<<<< HEAD
-  # admin sign ups
-=======
+
+ # admin_home 
   get "admin_home", to: "admin#index"
-
   get "group_home", to: "admin#index_group"
-
   get "project_home", to: "admin#index_project"
 
->>>>>>> ca1616f6fda9c4b94f6ab7673f6b488f28c73eb5
+   # admin sign ups
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
 
   # create new users 
+  delete 'create_users', to: 'create_user#destroy'
   get 'create_users', to: 'create_user#index', as: 'cusers'
   post 'create_users', to: 'create_user#new'
-  delete 'create_users', to: 'create_user#destroy'
+ 
 
   # create new group routes
   get "new_group", to: "admin#new_group"
