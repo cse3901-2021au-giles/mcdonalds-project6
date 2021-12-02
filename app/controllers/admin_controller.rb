@@ -43,7 +43,7 @@ class AdminController < ApplicationController
       if @group.save 
           redirect_to root_path, notice: "Successfully created group"
       else
-          render :new
+          render :new_group
       end
   end
 
@@ -61,12 +61,12 @@ class AdminController < ApplicationController
       if @projects.save 
           redirect_to root_path, notice: "Successfully created project"
       else
-          render :new
+        render :new_proj
       end
   end
 
   def  projects_params
-      params.require(:projects).permit(:projectname, :projecttype, :deadline, :commit)
+      params.require(:project).permit(:projectname, :projecttype, :deadline, :commit)
   end
 
   

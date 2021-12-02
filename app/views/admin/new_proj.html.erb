@@ -1,16 +1,16 @@
 <div>
-    <h1> Add Group</h1>
-    <div class = "projectName">
+    <h1> Add Project</h1>
+    <div class = "mb-3">
         <%= form_with model: @projcet, url: new_proj_path do |form|%>
         <%= form.label :projectName%>
         <%= form.text_field :projectname,class: "form-control", placeholder: "Project Ruby"%>
     </div>
-    <div class = "projectType">
+    <div class = "mb-3">
         
          <%= form.label :projecttype%>
          <%= form.text_field :projecttype,class: "form-control", placeholder: "Grou"%>
     </div>
-     <div class = "projectType">
+     <div class = "mb-3">
          <%= form.label :deadline %>
          <%= form.text_field :deadline,class: "form-control", placeholder: "2/27/2021"%>
     </div>
