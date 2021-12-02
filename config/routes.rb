@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'rails/routes'
   # main login page root
-  root 'sessions#login'
+  # root 'sessions#login'
 
 
  # admin_home 
@@ -10,9 +10,15 @@ Rails.application.routes.draw do
   get "project_home", to: "admin#index_project"
   delete 'group_home', to: 'admin#destroy'
 
-   # admin sign ups
+   # admin sign ups/logins/ logouts
+  root 'registrations#new'
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
+  delete 'logout', to: "sessions#destroy"
+  
+  # admin sign ins
+  get "sign_in", to: "sessions#new"
+  post "sign_in", to: "sessions#create"
 
   # create new users 
   delete 'create_users', to: 'create_user#destroy'

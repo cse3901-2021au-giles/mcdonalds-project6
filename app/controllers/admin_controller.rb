@@ -1,6 +1,9 @@
 class AdminController < ApplicationController
 
   def index
+    if session[:admin_id]
+      @admin = Admin.find_by(id: session[:admin_id])
+    end
   end
 
   def index_group
@@ -8,30 +11,6 @@ class AdminController < ApplicationController
   end
 
   def index_project
-  end
-
-  # all user controller functions
-  def new_user # for when you first open the page
-    @user = User.new
-    @users = User.all
-  end
-
-  def create_user # for when admin creates another user using forms 
-    @user = User.new(user_params)
-    if @user.save 
-      @users = User.all # reinstantiate users such that it can update page 
-      render :new_user, notice: "Successfully created account"
-    else
-      render :new_user
-    end
-  end
-
-  def delete_user
-
-  end
-
-  def  user_params
-    params.require(:user).permit(:name, :email, :password)
   end
 
   # all group controller functions for creating and managing groups.

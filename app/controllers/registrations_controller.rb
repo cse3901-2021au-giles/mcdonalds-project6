@@ -8,7 +8,8 @@ class RegistrationsController < ApplicationController
     def create
         @admin = Admin.new(user_params)
         if @admin.save 
-            redirect_to root_path, notice: "Successfully created account"
+            session[:admin_id] = @admin.id
+            redirect_to admin_home_path, notice: "Successfully created account"
         else
             render :new
         end
