@@ -38,8 +38,8 @@ Rails.application.routes.draw do
 
   # user routes
   get 'user_groups', to: 'user#group'
-  get 'user/proj'
-  get 'user/eval'
+  get 'user_proj', to: 'user#proj'
+  get 'user_eval', to: 'user#eval'
   get 'admin/create_user'
   get 'admin/create_group'
 

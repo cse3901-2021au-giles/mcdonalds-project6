@@ -6,7 +6,7 @@ class UserController < ApplicationController
   end
 
   def proj
-  end
+  end 
 
   def eval
   end

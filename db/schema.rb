@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 2021_12_02_181120) do
   end
 
   create_table "groups_projects", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "project_id"
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_groups_projects_on_group_id"
-    t.index ["user_id"], name: "index_groups_projects_on_user_id"
+    t.index ["project_id"], name: "index_groups_projects_on_project_id"
   end
 
   create_table "groups_users", force: :cascade do |t|
