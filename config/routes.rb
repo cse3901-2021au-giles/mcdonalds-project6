@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  resources :groups
   get 'rails/routes'
   # main login page root
   # root 'sessions#login'
