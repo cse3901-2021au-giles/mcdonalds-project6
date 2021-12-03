@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users
   resources :groups
   get 'rails/routes'
   # main login page root
@@ -22,12 +23,7 @@ Rails.application.routes.draw do
   get "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
 
-  # create new users 
-  delete 'create_users', to: 'create_user#destroy'
-  get 'create_users', to: 'create_user#index', as: 'cusers'
-  post 'create_users', to: 'create_user#new'
-  patch 'create_users', to: 'create_user#update'
- 
+  
 
   # create new group routes
   get "new_group", to: "admin#new_group"
@@ -38,11 +34,6 @@ Rails.application.routes.draw do
   get "new_proj", to: "admin#new_proj"
   post "new_proj", to: "admin#create_proj"
 
-  # user routes
-  get 'user_groups', to: 'user#group'
-  get 'user_proj', to: 'user#proj'
-  get 'user_eval', to: 'user#eval'
-  get 'admin/create_user'
   get 'admin/create_group'
 
   get 'admin/create_proj'
