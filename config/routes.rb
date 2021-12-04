@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :projects
   resources :users
   resources :groups
+  get 'add_to_group', to: 'groups#add_user' 
+  post 'add_to_group', to: 'groups#create_grouping'
+  delete 'add_to_group', to: 'groups#remove_user'
   get 'rails/routes'
   # main login page root
   # root 'sessions#login'

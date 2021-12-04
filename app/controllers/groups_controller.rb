@@ -11,8 +11,38 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
+    @group = Group.find(params[:id])
+    @groupUsers = @group.users
   end
 
+  def add_user
+    @users = User.all
+    @group = Group.find_by(id: params[:gid])
+    @groupUsers = @group.users
+  end
+
+  def create_grouping
+    # render plain: params[:gid]
+    @grouping = Grouping.new( {user_id: params[:uid], group_id: params[:gid]})
+    @users = User.all
+    @group = Group.find_by(id: params[:gid])
+    @groupUsers = @group.users
+    if @grouping.save
+      render :add_user, notice: "Successfully added"
+    else
+      render :add_user
+    end
+  end
+    
+  def remove_user
+    @grouping = Grouping.find_by({user_id: params[:uid], group_id: params[:gid]})
+    @grouping.destroy
+    @users = User.all
+    @group = Group.find_by(id: params[:gid])
+    @groupUsers = @group.users
+    flash[:success] = "The user was successfully removed from group."
+    render :add_user
+  end
   # GET /groups/new
   def new
     @group = Group.new
@@ -69,4 +99,7 @@ class GroupsController < ApplicationController
     def group_params
       params.require(:group).permit(:name)
     end
+
+   
+    
 end
