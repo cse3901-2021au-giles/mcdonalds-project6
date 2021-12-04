@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   resources :projects
   resources :users
+
+  # group stuff.
   resources :groups
   get 'add_to_group', to: 'groups#add_user' 
   post 'add_to_group', to: 'groups#create_grouping'

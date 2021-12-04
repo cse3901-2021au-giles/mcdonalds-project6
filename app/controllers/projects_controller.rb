@@ -3,11 +3,16 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
+    if session[:admin_id]
+      @admin = Admin.find_by(id: session[:admin_id])
+    end
     @projects = Project.all
   end
 
   # GET /projects/1 or /projects/1.json
   def show
+    @project = Project.find(params[:id])
+    @projectGroups = @project.groups
   end
 
   # GET /projects/new

@@ -1,12 +1,45 @@
 <p id="notice"><%= notice %></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <%link_to"admin_home", admin_home_path, class: "nav-link" %>
+          <a class="nav-link" href="/admin_home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/groups">Groups</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users">Users</a>
+        </li>
+        <% if @admin %>
+          <li class="nav-item">
+            <a class="nav-link"> Logged in as <%= @admin.email %>   
+             </a>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Logout", logout_path, method: :delete %>
+          </li>
+         <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <h1>Projects</h1>
 
-<table>
+<table class ="table">
   <thead>
     <tr>
-      <th>Projectname</th>
-      <th>Projecttype</th>
+      <th>Name</th>
+      <th>Type</th>
       <th>Date</th>
       <th colspan="3"></th>
     </tr>
@@ -18,9 +51,9 @@
         <td><%= project.projectname %></td>
         <td><%= project.projecttype %></td>
         <td><%= project.date %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show Assigned Groups', project, class: "btn btn-secondary" %></td>
+        <td><%= link_to 'Edit', edit_project_path(project), class: "btn btn-secondary" %></td>
+        <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
