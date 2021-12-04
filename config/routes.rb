@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   
+  #project controllers
   resources :projects
+  get 'assign_group', to: 'projects#assign_group'
+  post 'assign_group', to: 'projects#create_proj_group'
+  delete 'assign_group', to: 'projects#remove_group'
+  #user controllers
   resources :users
 
-  # group stuff.
+  # group controllers
   resources :groups
   get 'add_to_group', to: 'groups#add_user' 
   post 'add_to_group', to: 'groups#create_grouping'
@@ -29,20 +34,6 @@ Rails.application.routes.draw do
   get "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
 
-  
-
-  # create new group routes
-  get "new_group", to: "admin#new_group"
-  post "new_group", to: "admin#create_group"
- 
-
-  # create new project routes
-  get "new_proj", to: "admin#new_proj"
-  post "new_proj", to: "admin#create_proj"
-
-  get 'admin/create_group'
-
-  get 'admin/create_proj'
   get 'admin/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

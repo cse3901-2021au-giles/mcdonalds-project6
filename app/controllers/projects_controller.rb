@@ -9,12 +9,39 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  # GET /projects/1 or /projects/1.json
+  # project assignment page.
   def show
     @project = Project.find(params[:id])
     @projectGroups = @project.groups
   end
 
+  def assign_group
+    @groups = Group.all
+    @project = Project.find_by(id: params[:pid])
+    @projectGroups = @project.groups
+  end
+
+  def create_proj_group
+    @projectGroup = ProjectGroup.new( {project_id: params[:pid], group_id: params[:gid]})
+    @groups = Group.all
+    @project = Project.find_by(id: params[:pid])
+    @projectGroups = @project.groups
+    if @projectGroup.save
+      render :assign_group, notice: "Successfully assigned!"
+    else
+      render :assign_group
+    end
+  end
+
+  def remove_group
+    @projectGroup = ProjectGroup.find_by( {project_id: params[:pid], group_id: params[:gid]})
+    @projectGroup.destroy
+    @groups = Group.all
+    @project = Project.find_by(id: params[:pid])
+    @projectGroups = @project.groups
+    flash[:success] = "Group Successfully Removed From Project"
+    render :assign_group
+  end
   # GET /projects/new
   def new
     @project = Project.new
