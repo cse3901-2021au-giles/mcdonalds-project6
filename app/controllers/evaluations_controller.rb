@@ -20,19 +20,30 @@ class EvaluationsController < ApplicationController
     #To create a new evaluation (POST)
     #Named route: evaluation path 
     def create 
-        @evaluations = Evaluation.new(evaluation_params)
-
-        respond_to do |format| 
-            if @evaluation.save 
-                format.html {redirect_to @evaluation}
-                format.json{ render :show, status: :created, location: evaluation}
-            else
-                format.html {render : new }
-                format.json {render json: @evaluation.errors, status: :unprocesssable_entity}
+        @project = Project.find_by(id: params[:pid]) # find respective project for all the evaluations
+        @projectGroups = @project.groups
+        @projectGroups.each do |group|  # basically go through chain of associations to create all respective evaluations between users.
+            groupUsers = group.users
+            groupUsers.each do |sendUser|
+                groupUsers.each do |receiveUser|
+                    evaluation = Evaluation.new({evaluee: receiveUser.name, context: "", rating: "0", senderid: sendUser.id, receiverid: receiveUser.id, pid: @project.id})
+                    if evaluation.save
+                    else
+                        flash[:alert] = "Error Unable to Assign Evaluations!"
+                        @project.update(assigned: 0)
+                        redirect_to projects_path(added: 0, pid: @project.id)
+                    end
+                end
             end
         end
+        @project.update(assigned: 1) # update boolean to show that evaluations have been assigned
+        redirect_to projects_path(pid: @project.id) # go back to project screen with an updated view.
     end
 
+    def view
+        @project = Project.find_by(id: params[:pid]) # find respective project for all the evaluations
+        @projectGroups = @project.groups
+    end
     #For a page to edit evaluation with specific id number(GET)
     # Name route: edit evaluation_path(evaluation)
     def edit 
@@ -45,11 +56,19 @@ class EvaluationsController < ApplicationController
 
     #Delete an evaluation 
     def remove
-        @evaluation.remove 
-        respond_to do |format| 
-            format.html {redirect_to evaluations_url, notice: 'evaluations were removed'}
-            format.json {head: no_content}
+        @project = Project.find_by(id: params[:pid]) # find respective project for all the evaluations
+        @projectGroups = @project.groups
+        @projectGroups.each do |group|  # basically go through chain of associations to create all respective evaluations between users.
+            groupUsers = group.users
+            groupUsers.each do |sendUser|
+                groupUsers.each do |receiveUser|
+                    evaluation = Evaluation.find_by(senderid: sendUser.id, receiverid: receiveUser.id, pid: @project.id)
+                    evaluation.destroy
+                end
+            end
         end
+        @project.update(assigned: 0) # update boolean to show that evaluations have been assigned
+        redirect_to projects_path(pid: @project.id) # go back to project screen with an updated view.
     end
 
 

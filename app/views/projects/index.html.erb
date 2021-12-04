@@ -54,6 +54,18 @@
         <td><%= link_to 'Show Assigned Groups', project, class: "btn btn-secondary" %></td>
         <td><%= link_to 'Edit', edit_project_path(project), class: "btn btn-secondary" %></td>
         <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <td>
+        <% if project.assigned == 1 %>
+         <%= link_to 'Remove Evaluations', create_evaluation_path(pid: project.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-success" %>
+        <% else %>
+          <%= link_to 'Assign Evaluations', create_evaluation_path(pid: project.id), method: :post, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <% end %>
+        </td>
+        <td>
+        <% if project.assigned == 1 %>
+         <%= link_to 'View Evaluations', view_evaluation_path(pid: project.id), method: :get, class: "btn btn-secondary" %>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
