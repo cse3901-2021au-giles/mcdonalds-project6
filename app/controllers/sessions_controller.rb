@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       user = User.find_by(email: params[:email])
       if user.present? && user.password == params[:password] 
         session[:user_id] = user.id
-        redirect_to user_groups_path, notice: "Logged in successfully"
+        redirect_to user_home_path, notice: "Logged in successfully"
         # deny login otherwise.
       else
         flash[:alert] = "Invalid email or password"
