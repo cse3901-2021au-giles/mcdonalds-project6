@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
   
-<<<<<<< HEAD
   #eval controllers
   post 'create_evaluation', to: 'evaluations#create'
   delete 'delete_evaluation', to: 'evaluations#remove'
   get 'view_evaluation', to: 'evaluations#view'
   #project controllers
-=======
->>>>>>> 39af274b3bd4d9dc55db1a21e280a459527900fb
   resources :projects
   resources :users
   resources :groups
