@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get 'view_evaluation', to: 'evaluations#view'
   #project controllers
   resources :projects
+  
+  resources :groups 
   resources :users
-  resources :groups
+ 
   get 'add_to_group', to: 'groups#add_user' 
   post 'add_to_group', to: 'groups#create_grouping'
   delete 'add_to_group', to: 'groups#remove_user'
@@ -38,7 +40,9 @@ Rails.application.routes.draw do
   get "new_group", to: "admin#new_group"
   post "new_group", to: "admin#create_group"
  
-
+  #assign projects to groups 
+  get "assign_group", to: "projects#assign_group"
+  post "assign_group", to: "projects#create_proj_group"
   # create new project routes
   get "new_proj", to: "admin#new_proj"
   post "new_proj", to: "admin#create_proj"
@@ -48,15 +52,13 @@ Rails.application.routes.draw do
   get 'admin/create_proj'
   get 'admin/index'
 
-  #User homepage
-  get 'user_home', to: "users#home"
-
-  get 'user_groups', to: "groups#user_groups"
-
-  get 'show_group', to: "groups#show_user_groups"
-
-  get 'show_user_projects', to: "projects#show_user_projects"
-
+  # user_home 
+  get "user_home", to: "users#home"
+  get "user_group", to: "users#index_group"
+  get "user_project", to: "users#index_project"
+  #get "group_home", to:"users#index_group"
+  
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

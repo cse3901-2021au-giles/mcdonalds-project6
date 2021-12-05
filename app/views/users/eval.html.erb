@@ -13,10 +13,10 @@
           <a class="nav-link" href="/user_group">Groups</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/user_project">Projects</a>
+          <a class="nav-link" href="/user_projects">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/evaluations">Users</a>
+          <a class="nav-link" href="/evaluations">Evaluations</a>
         </li>
         <% if @user %>
           <li class="nav-item">
@@ -32,14 +32,10 @@
   </div>
 </nav>
 
-<body>
-<div>
-    <h1 class = "d-flex align-items-center justify-content-center"><%=@user.name %>'s Page</h1>
-    <p>Welcome to the User Page</p>
-    <br>
-    <h2 class = "align-items-center justify-content-center">Today's Date </h2>
-    <h5 class = "align-items-center justify-content-center"><%= Date.current %></h5>
-  
-  <p>Please use the navigation bar to update your work</p>
+<p id="notice"><%= notice %></p>
 
-</body>
+
+
+
+
+<%= link_to 'Back', projects_path %>
