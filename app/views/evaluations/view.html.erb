@@ -1,0 +1,21 @@
+<table class ="table">
+  <thead>
+    <tr>
+      <th>Evaluator</th>
+      <th>Evaluee Name</th>
+      <th>Score</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evaluations.each do |evaluation| %>
+      <tr>
+        <%evaluation.each do |eval|%>
+            <td> <%= eval %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

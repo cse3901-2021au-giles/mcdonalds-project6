@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   #eval controllers
   post 'create_evaluation', to: 'evaluations#create'
-  delete 'create_evaluation', to: 'evaluations#remove'
+  delete 'delete_evaluation', to: 'evaluations#remove'
   get 'view_evaluation', to: 'evaluations#view'
   #project controllers
   resources :projects

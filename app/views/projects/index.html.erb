@@ -56,7 +56,7 @@
         <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
         <td>
         <% if project.assigned == 1 %>
-         <%= link_to 'Remove Evaluations', create_evaluation_path(pid: project.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-success" %>
+         <%= link_to 'Remove Evaluations', delete_evaluation_path(pid: project.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-success" %>
         <% else %>
           <%= link_to 'Assign Evaluations', create_evaluation_path(pid: project.id), method: :post, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
         <% end %>
