@@ -59,10 +59,17 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   #GET user/home
   def home
     @user = User.find_by(id: session[:user_id])
     
+  end
+  
+  def index_group
+    @user=User.find_by(id: session[:user_id])
+    @Usergroup=@user.groups
   end
 
   private
