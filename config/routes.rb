@@ -41,4 +41,12 @@ Rails.application.routes.draw do
   get 'admin/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  #User homepage
+  get 'user_home', to: "users#home"
+
+  get 'user_groups', to: "groups#user_groups"
+
+  get 'show_group', to: "groups#show_user_groups"
+
+  get 'show_user_projects', to: "projects#show_user_projects"
 end
