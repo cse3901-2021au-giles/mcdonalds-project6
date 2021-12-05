@@ -89,6 +89,16 @@ class GroupsController < ApplicationController
     end
   end
 
+  def user_groups
+    @user=User.find_by(id: session[:user_id])
+    @Usergroup=@user.groups
+  end
+
+  def show_user_groups
+    @group=Group.find_by(params[:id])
+    @groupUsers=@group.users
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
