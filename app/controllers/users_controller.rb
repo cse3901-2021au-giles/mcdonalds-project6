@@ -64,7 +64,16 @@ class UsersController < ApplicationController
   #GET user/home
   def home
     @user = User.find_by(id: session[:user_id])
-    
+    # now using the user found, chain id scan from group to group to every respective project.
+    @userGroups = @user.groups
+    @projects = []
+    @userGroups.each do |group|
+      groupProjects = group.projects
+      groupProjects.each do |project|
+        @projects.append(project)
+      end
+    end
+
   end
   
   def index_group

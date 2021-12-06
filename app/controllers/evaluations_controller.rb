@@ -41,7 +41,6 @@ class EvaluationsController < ApplicationController
     end
 
     def view
-        
         @evaluations = [] # super inefficient right now, will need to figure out a good way to assign foreign key indexing from proj to evals
         @project = Project.find_by(id: params[:pid]) # find respective project for all the evaluations
         @projectGroups = @project.groups
