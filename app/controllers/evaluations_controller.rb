@@ -8,7 +8,7 @@ class EvaluationsController < ApplicationController
     #For a page to show evaluation (GET)
     #Named route: evaluation_path(evaluation)
     def show 
-        @evaluations = Evaluation.find(params [:id])
+        @evaluation = Evaluation.find(params[:id])
     end 
 
     #For a page to make a new evaluation (GET)
@@ -58,6 +58,7 @@ class EvaluationsController < ApplicationController
     #For a page to edit evaluation with specific id number(GET)
     # Name route: edit evaluation_path(evaluation)
     def edit 
+        @evaluations = Evaluation.find(params[:id])
     end 
 
     #To update an evaluation (PATCH)
@@ -82,9 +83,19 @@ class EvaluationsController < ApplicationController
         redirect_to projects_path(pid: @project.id) # go back to project screen with an updated view.
     end
 
+    def update 
+        @evaluation = Evaluation.find(params[:id])
+
+        if @evaluation.update_attributes(evaluation_params)
+            redirect_to :action =>'show', :id =>@evaluation
+        else
+            render :action => 'edit'
+        end
+    end 
+
 
     #authorization check points
     def evaluation_params
-        params.require(:evalution).permit(:u_name, :email, :password)
+        params.require(:evalution).permit(:evaluee, :context, :rating,:senderid, :receiverid,:pid)
     end
 end

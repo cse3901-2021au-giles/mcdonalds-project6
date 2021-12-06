@@ -12,11 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/user_group">Groups</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="/user_projects">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/evaluations">Evaluations</a>
+          <a class="nav-link" href="/user_eval">Evaluations</a>
         </li>
         <% if @user %>
           <li class="nav-item">
@@ -32,10 +30,24 @@
   </div>
 </nav>
 
-<p id="notice"><%= notice %></p>
+
+<h1>Editing Evaluation</h1>
 
 
+<%= form_with(evaluation: @evaluation) do |form| %>
+<p><%#=User.find(evaluation.senderid).name%></p>
+<div class="field">
+    <%= form.label :context %>
+    <%= form.text_area :context %>
+  </div>
 
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.number_field :rating %>
+  </div>
+  <div class="submit">
+    <%= form.submit "Add Group", class: "btn btn-primary" %>
+  </div>
+  <%end%>
 
-
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', evaluations_path %>

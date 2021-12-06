@@ -29,14 +29,16 @@
     </div>
   </div>
 </nav>
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
 
 <h1>Evaluations</h1>
 <table>
   <thead>
     <tr>
+      <th>Project</th>
       <th>Evaluee</th>
+      <th>Evaluator</th>
       <th>Context</th>
       <th>Rating</th>
       <th colspan="3"></th>
@@ -45,16 +47,24 @@
 
   <tbody>
     <% @evaluations.each do |evaluation| %>
+    <%# if @user.name == %>
       <tr>
+        <% if User.find(evaluation.senderid).name == @user.name%>
+        <td><%= Project.find(evaluation.pid).projectname%>
         <td><%= evaluation.evaluee %></td>
+        <td><%= User.find(evaluation.senderid).name%></td>
         <td><%= evaluation.context %></td>
         <td><%= evaluation.rating %></td>
-        <td><%= link_to 'Show', evaluation %></td>
+        
         <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
-        <td><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <%else%>
+        
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+
+
