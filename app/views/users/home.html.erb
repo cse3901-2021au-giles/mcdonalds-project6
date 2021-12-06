@@ -12,10 +12,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/user_group">Groups</a>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/user_eval">Evaluations</a>
-        </li>
         <% if @user %>
           <li class="nav-item">
             <a class="nav-link"> Logged in as <%= @user.email %>   
@@ -32,51 +28,76 @@
 
 <body>
 <div>
-    <h1 class = "d-flex align-items-center justify-content-center"><%=@user.name %>'s Page</h1>
-    <p>Welcome to the User Page</p>
+    <h1 class = "d-flex align-items-center justify-content-center"><%=@user.name %>'s Evaluations</h1>
+    <p>Welcome back!</p>
     <br>
-    <h2 class = "align-items-center justify-content-center">Today's Date </h2>
-    <h5 class = "align-items-center justify-content-center"><%= Date.current %></h5>
-
-    <% %>
-    <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    <h2 class = "align-items-center justify-content-center"> Today's Date: <%= Date.current %> </h2>
+    <br>
+    <br>
+    <h3>Evaluations To-do</h3>
+    <% @projects.each do |project, group| %>
+      <% if Date.current <= DateTime.strptime(project.date, "%D") %>
+      <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Project <%= project.projectname %>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <table class="table">
+            <thead>
+              <tr>
+                <th>Group Name</th>
+                <th colspan="3"></th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td> <%= group.name  %></td>
+                  <td> <%= link_to 'Edit Evaluations', user_eval_path(pid: project.id) %>  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+      <% end %>
+    <% end %>
 
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    <h3> Past Evaluations </h3>
+     <% @projects.each do |project, group| %>
+      <% if Date.current > DateTime.strptime(project.date, "%D") %>
+      <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Project <%= project.projectname %>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <table class="table">
+            <thead>
+              <tr>
+                <th>Group Name</th>
+                <th colspan="3"></th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td> <%= group.name  %></td>
+                  <td> <%= link_to 'View Evaluations', user_view_path %> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
 </div>
 </body>

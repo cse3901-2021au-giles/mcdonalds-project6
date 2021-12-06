@@ -81,6 +81,11 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
+    @associatedEvals = Evaluation.where(pid: @project.id)
+    @associatedEvals.each do |eval|
+      eval.destroy # cascading destroy for evals
+    end
+
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }

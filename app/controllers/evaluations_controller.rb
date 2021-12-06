@@ -20,7 +20,6 @@ class EvaluationsController < ApplicationController
     #To create a new evaluation (POST)
     #Named route: evaluation path 
     def create 
-
         @project = Project.find_by(id: params[:pid]) # find respective project for all the evaluations
         @projectGroups = @project.groups
         @projectGroups.each do |group|  # basically go through chain of associations to create all respective evaluations between users.

@@ -83,10 +83,11 @@ end
     # now using the user found, chain id scan from group to group to every respective project.
     @userGroups = @user.groups
     @projects = []
+    @groups = []
     @userGroups.each do |group|
       groupProjects = group.projects
       groupProjects.each do |project|
-        @projects.append(project)
+        @projects.append([project, group])
       end
     end
 
@@ -94,14 +95,20 @@ end
   
   def index_group
     @user=User.find_by(id: session[:user_id])
-    @Usergroup=@user.groups
+    @Usergroup = @user.groups
   end
 
   def index_eval
     @user = User.find_by(id: session[:user_id])
-    @evaluations = Evaluation.all
+    @project = Project.find_by(id: params[:pid])
+    @evaluations = Evaluation.all 
   end
 
+  def view
+    @user = User.find_by(id: session[:user_id])
+    @project = Project.find_by(id: params[:pid])
+    @evaluations = Evaluation.all 
+  end
 
   def evaluation_params
     params.require(:evaluation).permit(:evaluee,:context, :rating, :commit)
