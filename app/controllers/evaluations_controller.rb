@@ -59,7 +59,6 @@ class EvaluationsController < ApplicationController
     # Name route: edit evaluation_path(evaluation)
     def edit 
         @evaluation = Evaluation.find(params[:id])
-        
     end 
 
     #To update an evaluation (PATCH)
@@ -86,17 +85,18 @@ class EvaluationsController < ApplicationController
 
     def update 
         @evaluation = Evaluation.find(params[:id])
-
-        if @evaluation.update_attributes(evaluation_params)
-            redirect_to :action =>'show', :id =>@evaluation
+        if @evaluation.update(context: params[:evaluation][:context], rating: params[:evaluation][:rating].to_i)
+            redirect_to user_eval_path
         else
-            render :action => 'edit'
+            Rails.logger.info(@evaluation.errors.messages.inspect)
+            flash[:alert] = "Unable to Update Evaluation, Context can't be empty and Rating can't be empty!"
+            render :edit
         end
     end 
 
 
     #authorization check points
     def evaluation_params
-        params.require(:evalution).permit(:evaluee, :context, :rating,:senderid, :receiverid,:pid)
+        params.require(:evaluation).permit(:evaluee, :context, :rating,:senderid, :receiverid,:pid)
     end
 end

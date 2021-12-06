@@ -49,15 +49,13 @@
     <% @evaluations.each do |evaluation| %>
     <%# if @user.name == %>
       <tr>
-        <% if User.find(evaluation.senderid).name == @user.name%>
-        <td><%= Project.find(evaluation.pid).projectname%>
-        <td><%= User.find(evaluation.senderid).name%></td>
-        <td><%= evaluation.evaluee %></td>
-        <td><%= evaluation.context %></td>
-        <td><%= evaluation.rating %></td>
-        
-        <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
-        
+        <% if User.find(evaluation.senderid).id == @user.id%>
+          <td><%= Project.find(evaluation.pid).projectname%>
+          <td><%= User.find(evaluation.senderid).name%></td>
+          <td><%= evaluation.evaluee %></td>
+          <td><%= evaluation.context %></td>
+          <td><%= evaluation.rating %></td>
+          <td><%= link_to 'Edit', edit_eval_path(id: evaluation.id) %></td>
         <%else%>
         
         <%end%>

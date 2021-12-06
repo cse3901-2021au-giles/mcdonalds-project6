@@ -1,3 +1,9 @@
+<% if flash[:alert] %>
+      <div class="alert alert-primary" id="alert">
+         <%= flash[:alert] %> 
+      </div>
+<% end %>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,12 +37,10 @@
 </nav>
 
 
-<h1>Editing Evaluation</h1>
+<h1>Editing Evaluation for Evaluee <%= User.find(@evaluation.receiverid).name%></h1>
 
-
-<%= form_with(evaluation: @evaluation) do |form| %>
-<p><%#=User.find(evaluation.senderid).name%></p>
-<div class="field">
+<%= form_with model: @evaluation, url:user_eval_path(id: @evaluation.id), method: "patch", local: true do |form|%>
+  <div class="field">
     <%= form.label :context %>
     <%= form.text_area :context %>
   </div>
@@ -45,9 +49,10 @@
     <%= form.label :rating %>
     <%= form.number_field :rating %>
   </div>
-  <div class="submit">
-    <%= form.submit "Update Evaluation", ,method: update,class: "btn btn-primary" %>
-  </div>
-  <%end%>
 
-<%= link_to 'Back', evaluations_path %>
+  <div class="submit">
+    <%= form.submit "Update Evaluation", class: "btn btn-primary" %>
+  </div>
+<%end%>
+
+<%= link_to 'Back', user_eval_path %>

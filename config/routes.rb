@@ -3,14 +3,17 @@ Rails.application.routes.draw do
   get 'rails/routes'
 
   # eval controllers
-  resources :evaluations
+  # resources :evaluations
   # admin eval views
   post 'create_evaluation', to: 'evaluations#create'
   delete 'delete_evaluation', to: 'evaluations#remove'
   get 'view_evaluation', to: 'evaluations#view'
   # user eval views 
   get "user_eval", to: "users#index_eval"
-  update "update_eval", to: "evaluations#update"
+  get 'edit_eval', to: 'evaluations#edit'
+  patch 'user_eval', to: 'evaluations#update'
+
+  # update "update_eval", to: "evaluations#update"
   get "user_home", to: "users#home"
   get "user_group", to: "users#index_group"
 

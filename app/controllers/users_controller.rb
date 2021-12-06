@@ -98,8 +98,8 @@ end
   end
 
   def index_eval
-    @user=User.find_by(id: session[:user_id])
-    @evaluations=Evaluation.all
+    @user = User.find_by(id: session[:user_id])
+    @evaluations = Evaluation.all
   end
 
 

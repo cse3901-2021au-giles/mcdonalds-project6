@@ -1,6 +1,6 @@
 class Evaluation < ApplicationRecord
-  belongs_to :users
-  belongs_to :projects
+  # belongs_to :users
+  # belongs_to :projects
  
  
  validates :evaluee, presence:true, length:{ maximum:150 }
