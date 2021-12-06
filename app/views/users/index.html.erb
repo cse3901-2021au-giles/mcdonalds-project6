@@ -35,30 +35,33 @@
 </nav>
 
 <h1>Users</h1>
+<% @users.each do |user| %>
+  <% if !(@users.name == nil)%>
 
-<table class ="table table-striped table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Password</th>
+    <table class ="table table-striped table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          
+        </tr>
+      </thead>
+
+      <tbody>
       
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.password %></td>
-        <td><%= link_to 'Show', user, class: "btn btn-secondary"%></td>
-        <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.password %></td>
+            <td><%= link_to 'Show', user, class: "btn btn-secondary"%></td>
+            <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %></td>
+            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%></td>
+          </tr>
+      </tbody>
+    </table>
+  <%end%>
+<% end %>
 
 <br>
 
