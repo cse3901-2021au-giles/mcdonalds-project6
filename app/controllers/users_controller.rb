@@ -7,6 +7,7 @@ class UsersController < ApplicationController
       @admin = Admin.find_by(id: session[:admin_id])
     end
     @users = User.all
+    
   end
 
   # GET /users/1 or /users/1.json
@@ -19,7 +20,8 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
+  def edit_e
+    
   end
 
   # POST /users or /users.json
@@ -59,7 +61,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_eval
+    @evaluation= Evaluation.new
+  end
 
+def create_eval
+  if session[:user_id]
+    @user = User.find_by(id: session[:user_id])
+  end
+  @evaluation = Evaluation.new(projects_params)
+  if @evaluation.save 
+      redirect_to evaluation_path, notice: "Successfully created eval"
+  else
+    render :new_eval
+  end
+end
 
   #GET user/home
   def home
@@ -72,6 +88,15 @@ class UsersController < ApplicationController
     @Usergroup=@user.groups
   end
 
+  def index_eval
+    @user=User.find_by(id: session[:user_id])
+    @evaluations=Evaluation.all
+  end
+
+
+  def evaluation_params
+    params.require(:evaluation).permit(:evaluee,:context, :rating, :commit)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

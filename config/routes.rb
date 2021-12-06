@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'view_evaluation', to: 'evaluations#view'
   #project controllers
   resources :projects
-  
+  resources :evaluations
   resources :groups 
   resources :users
  
@@ -54,10 +54,13 @@ Rails.application.routes.draw do
   get 'admin/create_proj'
   get 'admin/index'
 
+
   # user_home 
   get "user_home", to: "users#home"
   get "user_group", to: "users#index_group"
-  get "user_project", to: "users#index_project"
+  #create new eval route 
+  get "user_eval", to: "users#index_eval"
+  post "user_eval", to: "evaluations#edit"
   #get "group_home", to:"users#index_group"
   
   
