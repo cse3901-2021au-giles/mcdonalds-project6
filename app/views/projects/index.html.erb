@@ -51,7 +51,7 @@
         <td><%= project.projectname %></td>
         <td><%= project.projecttype %></td>
         <td><%= project.date %></td>
-        <td><%= link_to 'Show Assigned Groups', project, class: "btn btn-secondary" %></td>
+        <td><%= link_to 'Show Assigned Groups', project, class: "btn btn-primary" %></td>
         <td><%= link_to 'Edit', edit_project_path(project), class: "btn btn-secondary" %></td>
         <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
         <td>
@@ -73,4 +73,4 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'New Project', new_project_path, class: "btn btn-primary" %>
