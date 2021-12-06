@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   #assign projects to groups 
   get "assign_group", to: "projects#assign_group"
   post "assign_group", to: "projects#create_proj_group"
+  delete "assign_group", to: "projects#remove_group"
+  
   # create new project routes
   get "new_proj", to: "admin#new_proj"
   post "new_proj", to: "admin#create_proj"
