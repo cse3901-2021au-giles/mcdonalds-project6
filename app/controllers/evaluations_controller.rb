@@ -58,7 +58,8 @@ class EvaluationsController < ApplicationController
     #For a page to edit evaluation with specific id number(GET)
     # Name route: edit evaluation_path(evaluation)
     def edit 
-        @evaluations = Evaluation.find(params[:id])
+        @evaluation = Evaluation.find(params[:id])
+        
     end 
 
     #To update an evaluation (PATCH)

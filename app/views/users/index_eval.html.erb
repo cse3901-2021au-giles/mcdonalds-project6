@@ -33,12 +33,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Evaluations</h1>
-<table>
+<table class = "table">
   <thead>
     <tr>
       <th>Project</th>
-      <th>Evaluee</th>
       <th>Evaluator</th>
+      <th>Evaluee</th>
       <th>Context</th>
       <th>Rating</th>
       <th colspan="3"></th>
@@ -51,8 +51,8 @@
       <tr>
         <% if User.find(evaluation.senderid).name == @user.name%>
         <td><%= Project.find(evaluation.pid).projectname%>
-        <td><%= evaluation.evaluee %></td>
         <td><%= User.find(evaluation.senderid).name%></td>
+        <td><%= evaluation.evaluee %></td>
         <td><%= evaluation.context %></td>
         <td><%= evaluation.rating %></td>
         
