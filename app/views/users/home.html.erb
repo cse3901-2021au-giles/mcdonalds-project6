@@ -11,11 +11,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <a class="navbar-brand" href="#" >
-          <div class="logo-image">
-            <img src="/images/logo.jpg" class="d-inline-block align-middle mr-2">
-          </div>
-        </a>
         <li class="nav-item">
             <%link_to"user_home", user_home_path, class: "nav-link" %>
           <a class="nav-link active" aria-current="page" href="/user_home">Home</a>
@@ -71,7 +66,7 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
-                  <td> <%= link_to 'Edit Evaluations', user_eval_path(pid: project.id) %>  </td>
+                  <td> <%= link_to 'Edit Evaluations', user_eval_path(pid: project.id),class: "btn btn-secondary" %>  </td>
                 </tr>
               </tbody>
             </table>
@@ -107,7 +102,11 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
+<<<<<<< HEAD
                   <td> <%= link_to 'View Evaluations', user_view_path(pid: project.id) %> </td>
+=======
+                  <td> <%= link_to 'View Evaluations', user_view_path,class: "btn btn-primary" %> </td>
+>>>>>>> d9fc24df2663883f11d044ebeb2ed359087dfb9c
                 </tr>
               </tbody>
             </table>
