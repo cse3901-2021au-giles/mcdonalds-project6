@@ -13,13 +13,12 @@ In this tool, the landing page will be the administrator sign up page.
 
 To sign up for an account, administrators will be required to enter their name, email, password and password confirmation. 
 
-To sign in the account, click on "Already have an account?" and enter your email and password.
+To sign in the account, click on "Already have an account?" and enter your osu email (name.#@osu.edu) and password.
 
 Then the administrator will create students account, which will require the administrators to enter the students name, email, password. The administrator can also create groups and project by clicking on the corrsponding button on the navigation bar.
 
 -For the students:
-To sign in the account, they can click on the "Already have an account?" button and enter your email and password.
-
+To sign in the account, they can click on the "Already have an account?" button and enter their email and password.
 
 
 
@@ -40,7 +39,11 @@ Migrate the database:
 Install webpacker:
 
     rails webpacker:install
-  
+
+Just in case make sure to do:
+
+    yarn
+
 Then run the rails server:
  
     rails server
@@ -53,29 +56,50 @@ To visit the website, open the browser andd type:
 
 ## Models
 
--admin-administrators
+- admin
+    This model is for all the administrators who will be managing their classes through this tool.
 
--user-students
+- user
+    This model is for all the students who will be using the tool.
 
--evaluation
+- evaluation
+    This model is for all the evaluations that will be made by each student.
 
--group
+- group
+    This model is for all the groups that students can be assigned to.
 
--project
+- grouping
+    This is the grouping that associates user to group.
+
+- ProjectGroup
+    This is the association model between groups and projects.
+
+- project
+    This model is for all the projects that admins can create and manage.
 
 
 ## Views
 
--Admin View
+- Admin View
+    Admins have their own set of views for managing groups, users, and projects.
 
--User View
+- User View
+    Students will have the user views to view their own respective evalutions.
 
--Shared View
-
+- Shared View
+    All users and admins will go through a login screen.
 
 ## Controllers
 
+## "Extra Features"
 
- 
+- Users can be in multiple groups, multiple groups can be in multiple projects, etc. (multiple group structures)
+- If a user drops the course, admins can easily delete users.
+- There is a login function for both admins and users.
+
+## "Features That Will Be Implemented (IF MORE TIME)" 
+- A class code to separate into multiple classes + prevent easy admin abuse.
+- Spreadsheet linking with Google's API for easy access to analysis functions provided by excel/google spreadsheets.
+
 # **Testing**
 
