@@ -1,3 +1,4 @@
+<%# require 'date' #require if not already required %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,8 +41,11 @@
     <br>
     <br>
     <h3>Evaluations To-do</h3>
+  <!-- Print out all projects that are due at this moment based on project due date -->
+ 
     <% @projects.each do |project, group| %>
-      <% if Date.current <= DateTime.strptime(project.date, "%D") %>
+      <% if !(project.date.to_date.past?)%>
+      <%# if Date.current <= DateTime.strptime(project.date, "%D") %>
       <div class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -71,6 +75,8 @@
       </div>
       <% end %>
     <% end %>
+        
+    <!-- Print out all projects that are not due at this moment based on project due date -->
 
     <h3> Past Evaluations </h3>
      <% @projects.each do |project, group| %>

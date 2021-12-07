@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit_e
+  def edit
     
   end
 
@@ -110,6 +110,7 @@ end
     @evaluations = Evaluation.all 
   end
 
+  #use this parameters list during updates or creation of evals
   def evaluation_params
     params.require(:evaluation).permit(:evaluee,:context, :rating, :commit)
   end
