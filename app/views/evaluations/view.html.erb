@@ -18,6 +18,7 @@
                   <th>Evaluee Name</th>
                   <th>Score</th>
                   <th>Comment</th>
+                  <th>Project</th>
                 </tr>
             </thead>
               <tbody>
@@ -28,6 +29,7 @@
                         <td> <%= eval.evaluee %></td>
                         <td> <%= eval.rating %></td>
                         <td> <%= eval.context %></td>
+                        <td><%= Project.find(eval.pid).projectname%></td>
                     <% end %>
                   </tr>
                 <% end %>

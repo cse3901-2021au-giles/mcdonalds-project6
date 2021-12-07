@@ -1,3 +1,8 @@
+<style>
+.collapse.show {
+  visibility: visible;
+}
+</style>
 <%# require 'date' #require if not already required %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -37,11 +42,11 @@
     <br>
     <h3>Evaluations To-do</h3>
   <!-- Print out all projects that are due at this moment based on project due date -->
- 
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% @projects.each do |project, group| %>
       <% if !(project.date.to_date.past?)%>
       <%# if Date.current <= DateTime.strptime(project.date, "%D") %>
-      <div class="accordion" id="accordionExample">
+      
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -70,6 +75,7 @@
       </div>
       <% end %>
     <% end %>
+    </div>
         
     <!-- Print out all projects that are not due at this moment based on project due date -->
 
@@ -96,7 +102,7 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
-                  <td> <%= link_to 'View Evaluations', user_view_path,class: "btn btn-primary" %> </td>
+                  <td> <%= link_to 'View Evaluations', user_view_path(pid: project.id), class: "btn btn-primary" %> </td>
                 </tr>
               </tbody>
             </table>
