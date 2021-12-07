@@ -18,8 +18,7 @@ To sign in the account, click on "Already have an account?" and enter your email
 Then the administrator will create students account, which will require the administrators to enter the students name, email, password. The administrator can also create groups and project by clicking on the corrsponding button on the navigation bar.
 
 -For the students:
-To sign in the account, they can click on the "Already have an account?" button and enter your email and password.
-
+To sign in the account, they can click on the "Already have an account?" button and enter their email and password.
 
 
 
@@ -40,7 +39,11 @@ Migrate the database:
 Install webpacker:
 
     rails webpacker:install
-  
+
+Just in case make sure to do:
+
+    yarn
+
 Then run the rails server:
  
     rails server
