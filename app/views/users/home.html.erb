@@ -80,7 +80,7 @@
 
     <h3> Past Evaluations </h3>
      <% @projects.each do |project, group| %>
-      <% if Date.current > DateTime.strptime(project.date, "%D") %>
+      <% if (project.date.to_date.past?)%>
       <div class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
