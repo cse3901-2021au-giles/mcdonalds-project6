@@ -18,24 +18,20 @@
                   <th>Evaluee Name</th>
                   <th>Score</th>
                   <th>Comment</th>
-                  <th>Project </th>
+                  <th>Project</th>
                 </tr>
             </thead>
               <tbody>
                 <% group.users.each do |user| %>
-                  
-                    
-                      <% Evaluation.where(senderid: user.id).each do |eval|%>
-                      <tr>
-                          <td> <%= user.name %></td>
-                          <td> <%= eval.evaluee %></td>
-                          <td> <%= eval.rating %></td>
-                          <td> <%= eval.context %></td>
-                          <td><%= Project.find(eval.pid).projectname%><td>
-                      
-                    </tr>
+                  <tr>
+                    <% Evaluation.where(senderid: user.id).each do |eval|%>
+                        <td> <%= user.name %></td>
+                        <td> <%= eval.evaluee %></td>
+                        <td> <%= eval.rating %></td>
+                        <td> <%= eval.context %></td>
+                        <td><%= Project.find(eval.pid).projectname%></td>
                     <% end %>
-                    
+                  </tr>
 ]
                 <% end %>
               </tbody>
@@ -45,5 +41,10 @@
       </div>
   <% end %>
 
+<<<<<<< HEAD
 <%= link_to 'Back', projects_path, class:"btn btn-secondary" %>
 </body>
+=======
+<%= link_to 'Back', projects_path %>
+</body>
+>>>>>>> a483df7e5cf4a97b11978d7508b23dd73031a667

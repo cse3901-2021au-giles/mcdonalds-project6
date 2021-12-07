@@ -1,3 +1,8 @@
+<style>
+.collapse.show {
+  visibility: visible;
+}
+</style>
 <%# require 'date' #require if not already required %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -6,11 +11,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <a class="navbar-brand" href="#" >
-          <div class="logo-image">
-            <img src="/images/logo.jpg" class="d-inline-block align-middle mr-2">
-          </div>
-        </a>
         <li class="nav-item">
             <%link_to"user_home", user_home_path, class: "nav-link" %>
           <a class="nav-link active" aria-current="page" href="/user_home">Home</a>
@@ -45,11 +45,11 @@
     <br>
     <h3>Evaluations To-do</h3>
   <!-- Print out all projects that are due at this moment based on project due date -->
- 
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% @projects.each do |project, group| %>
       <% if !(project.date.to_date.past?)%>
       <%# if Date.current <= DateTime.strptime(project.date, "%D") %>
-      <div class="accordion" id="accordionExample">
+      
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -69,7 +69,7 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
-                  <td> <%= link_to 'Edit Evaluations', user_eval_path(pid: project.id) %>  </td>
+                  <td> <%= link_to 'Edit Evaluations', user_eval_path(pid: project.id),class: "btn btn-secondary" %>  </td>
                 </tr>
               </tbody>
             </table>
@@ -78,12 +78,13 @@
       </div>
       <% end %>
     <% end %>
+    </div>
         
     <!-- Print out all projects that are not due at this moment based on project due date -->
 
     <h3> Past Evaluations </h3>
      <% @projects.each do |project, group| %>
-       <% if (project.date.to_date.past?)%>
+      <% if (project.date.to_date.past?)%>
       <div class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -104,7 +105,7 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
-                  <td> <%= link_to 'View Evaluations', user_view_path %> </td>
+                  <td> <%= link_to 'View Evaluations', user_view_path(pid: project.id), class: "btn btn-primary" %> </td>
                 </tr>
               </tbody>
             </table>
