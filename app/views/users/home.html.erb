@@ -41,8 +41,10 @@
     <br>
     <br>
     <h3>Evaluations To-do</h3>
+  <!-- Print out all projects that are due at this moment based on project due date -->
+ 
     <% @projects.each do |project, group| %>
-      <%if project.date.to_date.past?%>
+      <% if !(project.date.to_date.past?)%>
       <%# if Date.current <= DateTime.strptime(project.date, "%D") %>
       <div class="accordion" id="accordionExample">
       <div class="accordion-item">
@@ -73,6 +75,8 @@
       </div>
       <% end %>
     <% end %>
+        
+    <!-- Print out all projects that are not due at this moment based on project due date -->
 
     <h3> Past Evaluations </h3>
      <% @projects.each do |project, group| %>
