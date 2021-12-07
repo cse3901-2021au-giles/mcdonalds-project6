@@ -74,7 +74,7 @@ class EvaluationsController < ApplicationController
             groupUsers.each do |sendUser|
                 groupUsers.each do |receiveUser|
                     evaluation = Evaluation.find_by(senderid: sendUser.id, receiverid: receiveUser.id, pid: @project.id)
-                    evaluation.destroy
+                    evaluation.destroy # destroy all them evals.
                 end
             end
         end
@@ -84,11 +84,26 @@ class EvaluationsController < ApplicationController
 
     def update 
         @evaluation = Evaluation.find(params[:id])
-        if @evaluation.update(context: params[:evaluation][:context], rating: params[:evaluation][:rating].to_i)
-            redirect_to user_eval_path
+        # check to make sure parameter inputs are below the total 7*n requirement, else throw an error message 
+        @evaluations = Evaluation.where(senderid: @evaluation.senderid, pid: @evaluation.pid)
+        totalRating = 0
+        @evaluations.each do |previousEval| # sum total rating scores up first.
+            totalRating += previousEval.rating 
+        end
+        totalRating += (params[:evaluation][:rating].to_i - @evaluation.rating)
+        # if params[:evaluation][:rating].to_i > 10
+        #     flash[:alert] = "Unable to Update Evaluation, Rating Inputed must be valid score!"
+        #     render :edit
+        # end
+        # if totalRating > (@evaluations.length * 4)
+        #     flash[:alert] = "Unable to Update Evaluation, Total Rating must be less than 28"
+        #     render :edit
+        # end
+        if (totalRating <= 7 * @evaluations.length) && (params[:evaluation][:rating].to_i <= 10) && @evaluation.update(context: params[:evaluation][:context], rating: params[:evaluation][:rating].to_i)
+            redirect_to user_eval_path(pid: @evaluation.pid)
         else
             Rails.logger.info(@evaluation.errors.messages.inspect)
-            flash[:alert] = "Unable to Update Evaluation, Context can't be empty and Rating can't be empty!"
+            flash[:alert] = "Unable to Update Evaluation, Invalid Input! Either empty input, greater than 10 rating, or total evaluations are greater than 7*n score"
             render :edit
         end
     end 
