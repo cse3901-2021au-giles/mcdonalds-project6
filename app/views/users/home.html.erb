@@ -102,11 +102,7 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
-<<<<<<< HEAD
-                  <td> <%= link_to 'View Evaluations', user_view_path(pid: project.id) %> </td>
-=======
-                  <td> <%= link_to 'View Evaluations', user_view_path,class: "btn btn-primary" %> </td>
->>>>>>> d9fc24df2663883f11d044ebeb2ed359087dfb9c
+                  <td> <%= link_to 'View Evaluations', user_view_path(pid: project.id), class: "btn btn-primary" %> </td>
                 </tr>
               </tbody>
             </table>
