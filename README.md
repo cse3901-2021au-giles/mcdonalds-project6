@@ -13,7 +13,7 @@ In this tool, the landing page will be the administrator sign up page.
 
 To sign up for an account, administrators will be required to enter their name, email, password and password confirmation. 
 
-To sign in the account, click on "Already have an account?" and enter your email and password.
+To sign in the account, click on "Already have an account?" and enter your osu email (name.#@osu.edu) and password.
 
 Then the administrator will create students account, which will require the administrators to enter the students name, email, password. The administrator can also create groups and project by clicking on the corrsponding button on the navigation bar.
 
