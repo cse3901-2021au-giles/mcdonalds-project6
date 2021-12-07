@@ -50,8 +50,8 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= link_to 'Show Members', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= link_to 'Show Members', group , class: "btn btn-primary"%></td>
+        <td><%= link_to 'Edit', edit_group_path(group),class: "btn btn-secondary" %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
@@ -60,4 +60,4 @@
 
 <br>
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to 'New Group', new_group_path,class: "btn btn-primary" %>

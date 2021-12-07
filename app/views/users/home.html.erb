@@ -66,7 +66,7 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
-                  <td> <%= link_to 'Edit Evaluations', user_eval_path(pid: project.id) %>  </td>
+                  <td> <%= link_to 'Edit Evaluations', user_eval_path(pid: project.id),class: "btn btn-secondary" %>  </td>
                 </tr>
               </tbody>
             </table>
@@ -101,7 +101,7 @@
               <tbody>
                 <tr>
                   <td> <%= group.name  %></td>
-                  <td> <%= link_to 'View Evaluations', user_view_path %> </td>
+                  <td> <%= link_to 'View Evaluations', user_view_path, ,class: "btn btn-primary" %> </td>
                 </tr>
               </tbody>
             </table>
