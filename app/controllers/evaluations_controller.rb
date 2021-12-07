@@ -74,11 +74,13 @@ class EvaluationsController < ApplicationController
             groupUsers.each do |sendUser|
                 groupUsers.each do |receiveUser|
                     evaluation = Evaluation.find_by(senderid: sendUser.id, receiverid: receiveUser.id, pid: @project.id)
-                    evaluation.destroy # destroy all them evals.
+                    if !(evaluation.nil?)
+                        evaluation.destroy # destroy all them evals.
+                    end
                 end
             end
         end
-        @project.update(assigned: 0) # update boolean to show that evaluations have been assigned
+        @project.update(assigned: 0) # update boolean to show that evaluations have not been assigned
         redirect_to projects_path(pid: @project.id) # go back to project screen with an updated view.
     end
 
