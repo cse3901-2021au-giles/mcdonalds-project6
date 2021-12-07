@@ -5,6 +5,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <a class="navbar-brand" href="#" >
+          <div class="logo-image">
+            <img src="/imsages/logo.jpg" class="d-inline-block align-middle mr-2">
+          </div>
+        </a>
         <li class="nav-item">
             <%link_to"admin_home", admin_home_path, class: "nav-link" %>
           <a class="nav-link active" aria-current="page" href="/admin_home">Home</a>
@@ -33,14 +38,18 @@
 </nav>
 
 <body>
-<div>
+  <div class="content">
     <h1 class = "d-flex align-items-center justify-content-center">Admin Page</h1>
-    <p>Welcome to the Administration Page</p>
+    <p class="fs-1 fw-bold d-flex justify-content-center ">Welcome to the Administration Page</p>
     <br>
-    <h2 class = "align-items-center justify-content-center">Today's Date </h2>
-    <h5 class = "align-items-center justify-content-center"><%= Date.current %></h5>
-  
-  <p>Please use the navigation bar to update your work</p>
-
+    <h2 class = "d-flex align-items-center justify-content-center">Today's Date: </h2>
+    <h5 class = "d-flex align-items-center justify-content-center"><%= Date.current %></h5>
+    <div>
+    <p class= "d-flex justify-content-center">Please use the navigation bar to update your work</p>
+    </div>
+  </div>
+  <div class="d-flex align-items-center justify-content-center" id="footer"
+    <p>The Ohio State University</p>
+  </div>
 </body>
 
