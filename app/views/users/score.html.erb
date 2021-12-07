@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <a class="navbar-brand" href="#" >
+          <div class="logo-image">
+            <img src="/imsages/logo.jpg" class="d-inline-block align-middle mr-2">
+          </div>
+        </a>
+        <li class="nav-item">
+            <%link_to"user_home", user_home_path, class: "nav-link" %>
+          <a class="nav-link active" aria-current="page" href="/user_home">Home</a>
+        </li>
+        <% if @user %>
+          <li class="nav-item">
+            <a class="nav-link"> Logged in as <%= @user.email %>   
+             </a>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Logout", logout_path, method: :delete %>
+          </li>
+         <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<h1><%=@user.name%>'s Average Scores</h1>
+
+
+<br>
+    
+    <%@average =0%>
+    <%@count =0%>
+    <%@projectsDone %>
+    <% @evaluations.each do |evaluation| %>
+        <% if User.find(evaluation.receiverid).id == @user.id%>
+            <%@average = evaluation.rating + @average %>
+            <%@count +=1%>
+        <%end%>
+    <%end%>
+    <h3>The average score for this semester is: <%=@average/@count%></h3>
+    
+
+

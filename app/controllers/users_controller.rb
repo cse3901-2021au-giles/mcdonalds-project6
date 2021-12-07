@@ -114,6 +114,12 @@ end
   def evaluation_params
     params.require(:evaluation).permit(:evaluee,:context, :rating, :commit)
   end
+  
+  def score
+    @user = User.find_by(id: session[:user_id])
+    @project = Project.find_by(id: params[:pid])
+    @evaluations = Evaluation.all 
+  end 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

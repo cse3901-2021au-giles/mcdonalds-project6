@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   # user home page and group routes
   get "user_home", to: "users#home"
   get "user_group", to: "users#index_group"
+  get "score", to: "users#score"
+
 
   #project controllers
   resources :projects
