@@ -91,14 +91,8 @@ class EvaluationsController < ApplicationController
             totalRating += previousEval.rating 
         end
         totalRating += (params[:evaluation][:rating].to_i - @evaluation.rating)
-        # if params[:evaluation][:rating].to_i > 10
-        #     flash[:alert] = "Unable to Update Evaluation, Rating Inputed must be valid score!"
-        #     render :edit
-        # end
-        # if totalRating > (@evaluations.length * 4)
-        #     flash[:alert] = "Unable to Update Evaluation, Total Rating must be less than 28"
-        #     render :edit
-        # end
+
+        # check valid else or throw an error
         if (totalRating <= 7 * @evaluations.length) && (params[:evaluation][:rating].to_i <= 10) && @evaluation.update(context: params[:evaluation][:context], rating: params[:evaluation][:rating].to_i)
             redirect_to user_eval_path(pid: @evaluation.pid)
         else
