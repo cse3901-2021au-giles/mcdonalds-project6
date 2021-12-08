@@ -103,8 +103,11 @@ To visit the website, open the browser andd type:
 
 # **Testing**
 
-Note: Testing is broken right now as unfortunately we do not have the manpower and time currently to fix the current set of test cases, but for any contributors (and graders), our test cases are in the test/controllers/ directory.
+In case rails test fails, perform:
 
-Run to see testing errors:
+    rake db:migrate
+    rake db:test:prepare
+
+Run to see basic testing:
 
     rails test
