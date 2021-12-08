@@ -5,11 +5,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <a class="navbar-brand" href="#" >
-          <div class="logo-image">
-            <img src="/imsages/logo.jpg" class="d-inline-block align-middle mr-2">
-          </div>
-        </a>
         <li class="nav-item">
             <%link_to"user_home", user_home_path, class: "nav-link" %>
           <a class="nav-link active" aria-current="page" href="/user_home">Home</a>
@@ -33,17 +28,11 @@
 
 
 <br>
-    
-    <%@average =0%>
-    <%@count =0%>
-    <%@projectsDone %>
-    <% @evaluations.each do |evaluation| %>
-        <% if User.find(evaluation.receiverid).id == @user.id%>
-            <%@average = evaluation.rating + @average %>
-            <%@count +=1%>
-        <%end%>
-    <%end%>
-    <h3>The average score for this semester is: <%=@average/@count%></h3>
-    
+    <h5>Your Average Score for This Semester: <%=@score%><h5>
+     <%count = 1 %>
+     <%@projs.each do |sc|%>
+     <p>Project <%=count %> Average is: <%=sc%></p>
+     <%count +=1%>
+     <%end%>
 
-
+    

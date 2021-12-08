@@ -122,6 +122,54 @@ end
     @user = User.find_by(id: session[:user_id])
     @project = Project.find_by(id: params[:pid])
     @evaluations = Evaluation.all 
+    @evaluation= Evaluation.new
+    #print out the score average for semester
+    @score =0 
+    @projs = []
+    @scoring = {}
+   
+    
+    count = 0 
+   
+    @userGroups = @user.groups 
+    @userGroups.each do |group| 
+      @projects = group.projects
+      @projects.each do |proj|
+        average = 0 
+        @evaluations = Evaluation.where(pid: proj.id)
+        counting =0
+        @evaluations.each do |eval|
+          if eval.receiverid == @user.id
+            average += eval.rating
+            counting +=1
+          end
+
+        end
+
+        if(counting>0)
+          average /=counting
+        end
+
+        @projs.append(average)
+      end
+    end
+
+    @evaluations = Evaluation.all
+    count = 0 
+    @evaluations.each do |eval|
+      
+      if(User.find(eval.receiverid).id== @user.id)
+        @score += eval.rating 
+        count +=1
+      end
+    end
+    if(count > 0 )
+      @score /=count
+    else
+      @score = 0 
+    end 
+    #print out averages for project
+    
   end 
   private
     # Use callbacks to share common setup or constraints between actions.
