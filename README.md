@@ -48,7 +48,7 @@ Then run the rails server:
  
     rails server
     
-To visit the website, open the browser andd type: 
+To visit the website, open the browser and type: 
 
     localhost:3000
     
@@ -96,6 +96,7 @@ To visit the website, open the browser andd type:
 - Users can be in multiple groups, multiple groups can be in multiple projects, etc. (multiple group structures)
 - If a user drops the course, admins can easily delete users.
 - There is a login function for both admins and users.
+- Basic analytics (was very hard) for admin view of evaluations
 
 ## "Features That Will Be Implemented (IF MORE TIME)" 
 - A class code to separate into multiple classes + prevent easy admin abuse.
@@ -103,3 +104,15 @@ To visit the website, open the browser andd type:
 
 # **Testing**
 
+In case rails test fails, perform:
+
+    rake db:migrate
+    rake db:test:prepare
+
+Run to see basic testing:
+
+    rails test
+
+# Known issues (unsure of how to fix at this very moment)
+- Evaluations sometimes may not list in the accordion
+- Sometimes delete doesn't cascade such that you may get id errors.

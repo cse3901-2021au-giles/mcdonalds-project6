@@ -33,9 +33,11 @@
 
 
 <br>
-    <h5>Your Average Score for This Semester: <%@score%><h5>
-    
-    
-
+    <h5>Your Average Score for This Semester: <%=@score%><h5>
+     <%count = 1 %>
+     <%@projs.each do |sc|%>
+     <p>Project <%=count %> Average is: <%=sc%></p>
+     <%count +=1%>
+     <%end%>
 
     
