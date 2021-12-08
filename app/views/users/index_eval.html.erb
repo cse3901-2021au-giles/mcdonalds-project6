@@ -39,7 +39,7 @@
 
   <tbody>
     <% @evaluations.each do |evaluation| %>
-    <%# if @user.name == %>
+    
       <tr>
         <% if User.find(evaluation.senderid).id == @user.id && evaluation.pid == @project.id %>
           <td><%= User.find(evaluation.senderid).name%></td>
