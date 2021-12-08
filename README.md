@@ -48,7 +48,7 @@ Then run the rails server:
  
     rails server
     
-To visit the website, open the browser andd type: 
+To visit the website, open the browser and type: 
 
     localhost:3000
     
