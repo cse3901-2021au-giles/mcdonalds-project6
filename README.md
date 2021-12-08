@@ -111,3 +111,7 @@ In case rails test fails, perform:
 Run to see basic testing:
 
     rails test
+
+# Known issues (unsure of how to fix at this very moment)
+- Evaluations sometimes may not list in the accordion
+- Sometimes delete doesn't cascade such that you may get id errors.
