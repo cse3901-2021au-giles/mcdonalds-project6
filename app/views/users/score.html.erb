@@ -33,17 +33,9 @@
 
 
 <br>
+    <h5>Your Average Score for This Semester: <%@score%><h5>
     
-    <%@average =0%>
-    <%@count =0%>
-    <%@projectsDone %>
-    <% @evaluations.each do |evaluation| %>
-        <% if User.find(evaluation.receiverid).id == @user.id%>
-            <%@average = evaluation.rating + @average %>
-            <%@count +=1%>
-        <%end%>
-    <%end%>
-    <h3>The average score for this semester is: <%=@average/@count%></h3>
     
 
 
+    

@@ -119,6 +119,22 @@ end
     @user = User.find_by(id: session[:user_id])
     @project = Project.find_by(id: params[:pid])
     @evaluations = Evaluation.all 
+
+    #print out the score average for semester
+    @score =0 
+    
+    count = 0 
+  
+    @evaluations.each do |eval|
+      if(User.find(eval.receiverid).id == @user.id)
+        @score += eval.rating 
+        count = count+1
+      end
+    end
+    @score /=count
+
+    
+    
   end 
   private
     # Use callbacks to share common setup or constraints between actions.
