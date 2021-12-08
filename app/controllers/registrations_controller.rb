@@ -5,6 +5,7 @@ class RegistrationsController < ApplicationController
         @admin = Admin.new
     end
 
+    # for signup pages
     def create
         @admin = Admin.new(user_params)
         if @admin.save 

@@ -15,12 +15,14 @@ class ProjectsController < ApplicationController
     @projectGroups = @project.groups
   end
 
+  # assign group to project get page controller
   def assign_group
     @groups = Group.all
     @project = Project.find_by(id: params[:pid])
     @projectGroups = @project.groups
   end
 
+  # create project group pairing
   def create_proj_group
     @projectGroup = ProjectGroup.new( {project_id: params[:pid], group_id: params[:gid]})
     @groups = Group.all
@@ -33,6 +35,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # remove groups from group to project pairing
   def remove_group
     @projectGroup = ProjectGroup.find_by( {project_id: params[:pid], group_id: params[:gid]})
     @projectGroup.destroy

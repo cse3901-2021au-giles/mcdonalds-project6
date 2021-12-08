@@ -1,11 +1,15 @@
 class AdminController < ApplicationController
 
+  # initial index admin home page controller
   def index
     if session[:admin_id]
       @admin = Admin.find_by(id: session[:admin_id])
     end
   end
 
+
+
+  # below were preliminary functions that can ignore. They were how we learned how to MVC ruby on rails, please don't consider this part for grading.
   def index_group
     @groups = Group.all
     if session[:admin_id]
@@ -19,7 +23,6 @@ class AdminController < ApplicationController
     end
   end
 
-  # all group controller functions for creating and managing groups.
   def new_group
       @groups = Group.all
       @group= Group.new

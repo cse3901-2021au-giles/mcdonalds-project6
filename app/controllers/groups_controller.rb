@@ -15,12 +15,14 @@ class GroupsController < ApplicationController
     @groupUsers = @group.users
   end
 
+  # add a user to group page controller
   def add_user
     @users = User.all
     @group = Group.find_by(id: params[:gid])
     @groupUsers = @group.users
   end
 
+  # creates a user to group pairing
   def create_grouping
     # render plain: params[:gid]
     @grouping = Grouping.new( {user_id: params[:uid], group_id: params[:gid]})
@@ -34,6 +36,7 @@ class GroupsController < ApplicationController
     end
   end
     
+  # remove user from grouping to page.
   def remove_user
     @grouping = Grouping.find_by({user_id: params[:uid], group_id: params[:gid]})
     @grouping.destroy

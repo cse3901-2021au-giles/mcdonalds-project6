@@ -93,17 +93,20 @@ end
 
   end
   
+  # user view for groups
   def index_group
     @user=User.find_by(id: session[:user_id])
     @Usergroup = @user.groups
   end
 
+  # user edit controller for evaluations
   def index_eval
     @user = User.find_by(id: session[:user_id])
     @project = Project.find_by(id: params[:pid])
     @evaluations = Evaluation.all 
   end
 
+  # user view for evaluations
   def view
     @user = User.find_by(id: session[:user_id])
     @project = Project.find_by(id: params[:pid])

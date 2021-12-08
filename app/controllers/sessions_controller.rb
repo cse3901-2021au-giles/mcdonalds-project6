@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # login page to find if the email is an admin.
+    # login page to find if the email is an admin. authentication of admins happen here.
     admin = Admin.find_by(email: params[:email])
     if admin.present? && admin.authenticate(params[:password]) # use a hash
       session[:admin_id] = admin.id
